@@ -9,6 +9,15 @@ const sequelize = new Sequelize({
   logging: false // disable logging to the console when running.
 });
 
+(async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('Victory! Connection to the database successful!');
+  } catch (error) {
+    console.error('Rats. Error connecting to the database: ', error);
+  }
+})();
+
 const db = {
   sequelize,
   Sequelize,
